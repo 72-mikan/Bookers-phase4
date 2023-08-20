@@ -20,6 +20,8 @@ ja:
               blank: "が入力されておりません"
             name:
               too_short: "が入力されておりません"
+            password_confirmation:
+              confirmation: "が一致しておりません"
   devise:
     confirmations:
       new:
