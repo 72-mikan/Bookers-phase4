@@ -57,3 +57,5 @@ gem 'devise'
 
 gem 'jquery-rails'
 gem 'pry-byebug', group: :development
+
+gem 'acts-as-taggable-on', '~> 9.0'
