@@ -1,0 +1,5 @@
+/*global $*/
+
+$(function() {
+  $('.slider').slick();
+});
