@@ -11,13 +11,13 @@ import jQuery from "jquery"
 import "popper.js"
 import "bootstrap"
 
-import "./slick"
-
 import '@fortawesome/fontawesome-free/js/all';
 import "../stylesheets/application"
 
+import "./slick"
+
 Rails.start()
-Turbolinks.start()
+// Turbolinks.start()
 ActiveStorage.start()
 
 global.$ = jQuery;
