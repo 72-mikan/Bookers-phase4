@@ -7,18 +7,35 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
   has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
+
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :reverse_of_relationships, source: :follower
-  
+
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
-  
+
+  # 都道府県情報
+  include JpPrefecture
+  jp_prefecture :prefecture_code
+
+  # 都道府県名前取得
+  def get_prefecture_name
+    JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
+  end
+
+  # 都道府県名取得
+  def prefecture_name=(get_prefecture_name)
+    self.prefecture_code = JpPrefecture::Prefecture.find(name: get_prefecture_name)
+  end
+
+  geocoded_by :address_city
+  after_validation :geocode, if: :address_city_changed?
+
   has_one_attached :profile_image
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 50 }
-  
+
   def follow(user)
     puts user.name
     relationships.create(followed_id: user.id)

@@ -57,3 +57,8 @@ gem 'devise'
 
 gem 'jquery-rails'
 gem 'pry-byebug', group: :development
+
+gem 'jp_prefecture'
+
+gem 'dotenv-rails'
+gem "geocoder"

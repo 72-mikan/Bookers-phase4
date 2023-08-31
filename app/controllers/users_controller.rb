@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
+    @results = Geocoder.coordinates(@user.address_city + @user.address_street)
   end
 
   def index
