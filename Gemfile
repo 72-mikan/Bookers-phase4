@@ -57,3 +57,6 @@ gem 'devise'
 
 gem 'jquery-rails'
 gem 'pry-byebug', group: :development
+
+gem 'rakuten_web_service'
+gem 'dotenv-rails'
